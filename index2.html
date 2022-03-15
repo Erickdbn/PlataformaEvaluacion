@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>LLenado de datos</title>
+        <link href="css/estilos.css" rel="StyleSheet" type="text/css" />
+<script>
+
+        function validateIP(ip, formName) {
+
+            var ipPart = new Array();
+            ipPart = ip.split('.');
+            if (ipPart.length < 4) {
+                alert('No tiene formato de IPv4.');
+            }
+            var a = 0;
+            for (var i = 0; i < ipPart.length; i++) {
+                if (isNaN(ipPart[i])) {
+                    alert('La IP no puede contener letras.');
+                    break;
+                }
+                if (ipPart[i] < 0 || ipPart[i] > 255) {
+                    alert('No tiene formato de IPv4.');
+                    break;
+                }
+                a++;
+            }
+
+            if (a == 4)
+                document.forms[formName].submit();
+    else
+  alert('IP mal formada');
+        }
+    
+        function myFunc()  {
+        var now = new Date();
+        var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+        document.getElementById('display-time').innerHTML = time;
+    }
+    setInterval(myFunc, 1000);
+        </script>
+  
+    </head>
+    
+    <body>
+        <form  name="formIp" method="post" action="index.html">
+            <fieldset><legend>Datos del Usuario</legend>
+            <div>
+                <label id="usuario">Nombre del usuario: </label>
+                <input id="usuario" type="text" required>
+            </div>
+            <div>
+			     <label id="matricula">Matricula: </label>
+			     <input type="text" id="matricula" required>
+		    </div>
+
+            <div>
+			     <label id="hrE">Hora de entrada:  </label>
+			     
+                 <p id="display-time"></p>
+
+            </div>
+
+            <div>
+			     <label id="hrS">Hora de salida: </label>
+			     <input id="hrsalida" type="time" required>
+            </div>
+            <div>
+			     <label id="equipo">Equipo utilizado: </label>
+			     <input id="equipoC" type="text" required>
+            </div>
+            <div>
+			     <label id="ip2">IP del equipo: </label>
+			     <input id="ip" type="text" name="ip">
+            </div>
+                
+            <div>
+			     <label id="as">Obetivo del prestamo: </label>
+			     <textarea id="obj" required></textarea>
+            </div>
+            <div>
+			     <label id="ma">Materia: </label>
+			     <input type="text" id="materia" required>
+		    </div>
+            <div>
+			     <label id="mtro">Maestro: </label>
+			     <input type="text" id="maestro" required>
+		    </div>
+            <div>
+			     <label id="F">Fecha: </label>
+			     <input type="text" id="fecha" required>
+		    </div>
+			     <input type="button" value="Entrar" id="boton" onclick="validateIP(document.getElementById('ip').value,'formIp');">
+            </fieldset>
+        </form>
+        
+    </body>
+</html>
